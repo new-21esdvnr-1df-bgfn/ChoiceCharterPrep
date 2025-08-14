@@ -4454,7 +4454,7 @@
         {
          "name":"mapImage",
          "type":"string",
-         "value":"project-labs.png"
+         "value":"cc-prep.png"
         }, 
         {
          "name":"mapName",
