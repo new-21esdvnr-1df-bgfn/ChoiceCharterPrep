@@ -25,6 +25,7 @@ WA.onInit().then(() => {
         WA.room.hideLayer("roof-appear");
         WA.room.hideLayer("walls-bg-front");
         WA.room.hideLayer("sign");
+        WA.room.hideLayer("sign2");
       });
       
     WA.room.onLeaveLayer("floor").subscribe(() => {
@@ -32,6 +33,7 @@ WA.onInit().then(() => {
         WA.room.showLayer("walls-bg-front");
         WA.room.showLayer("facade-furniture-bg");
         WA.room.showLayer("sign");
+        WA.room.showLayer("sign2");
       });
   
       WA.room.onEnterLayer("rooms_floor").subscribe(() => {
