@@ -1823,21 +1823,15 @@
                  "y":704
                 }, 
                 {
-                 "height":576,
+                 "height":128,
                  "id":136,
                  "name":"closing-screen",
-                 "properties":[
-                        {
-                         "name":"url",
-                         "type":"string",
-                         "value":"https:\/\/docs.google.com\/presentation\/d\/e\/2PACX-1vQEQ0ojoOwMIkNL7yn5FyYvCgoMZXBKvT6UxuE7AFvI5YyBgRJvJ1v_SF9dpa2u3fMhaaUfNhYsxiZK\/pubembed?start=false&loop=false&delayms=3000&rm=minimal"
-                        }],
                  "rotation":0,
-                 "type":"website",
+                 "type":"",
                  "visible":true,
-                 "width":1024,
-                 "x":2176,
-                 "y":1376
+                 "width":576,
+                 "x":2400,
+                 "y":1568
                 }],
          "opacity":1,
          "type":"objectgroup",

@@ -52,7 +52,7 @@ WA.onInit().then(() => {
 
         WA.ui.openPopup(
             "closing-screen",
-            "This space is currently closed.\n\nPlease visit us during Iowa business hours (8:00–18:00 CT).",
+            "This space is currently closed.\n\nPlease join during opening hours (7:00am – 8pm CT).",
             []
         );
     }
