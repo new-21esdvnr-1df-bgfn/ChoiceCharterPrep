@@ -39,6 +39,13 @@ WA.onInit().then(() => {
     console.log('Scripting API ready');
     console.log('Player tags: ',WA.player.tags)
 
+    const { hours, minutes } = getIowaTime();
+    console.log(
+        `[Iowa Time Check] ${hours.toString().padStart(2, "0")}:${minutes
+            .toString()
+            .padStart(2, "0")} CT`
+    );
+
         // ===== Iowa time access check =====
     if (!isMapOpenInIowa()) {
         WA.ui.openPopup(
