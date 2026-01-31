@@ -1823,7 +1823,7 @@
                  "y":704
                 }, 
                 {
-                 "height":128,
+                 "height":64,
                  "id":136,
                  "name":"closing-screen",
                  "rotation":0,
@@ -1831,7 +1831,7 @@
                  "visible":true,
                  "width":576,
                  "x":2400,
-                 "y":1568
+                 "y":1600
                 }],
          "opacity":1,
          "type":"objectgroup",
