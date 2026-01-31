@@ -6,10 +6,49 @@ console.log('Script started successfully');
 
 let currentPopup: any = undefined;
 
+// ===== Iowa (Central Time) helpers =====
+function getIowaTime(): { hours: number; minutes: number } {
+    const now = new Date();
+    const formatter = new Intl.DateTimeFormat("en-US", {
+        timeZone: "America/Chicago",
+        hour: "2-digit",
+        minute: "2-digit",
+        hour12: false,
+    });
+
+    const parts = formatter.formatToParts(now);
+    const hours = Number(parts.find(p => p.type === "hour")?.value);
+    const minutes = Number(parts.find(p => p.type === "minute")?.value);
+
+    return { hours, minutes };
+}
+
+function isMapOpenInIowa(): boolean {
+    const { hours, minutes } = getIowaTime();
+    const currentMinutes = hours * 60 + minutes;
+
+    const OPEN_TIME = 8 * 60;   // 08:00 Iowa time
+    const CLOSE_TIME = 18 * 60; // 18:00 Iowa time
+
+    return currentMinutes >= OPEN_TIME && currentMinutes < CLOSE_TIME;
+}
+
+
 // Waiting for the API to be ready
 WA.onInit().then(() => {
     console.log('Scripting API ready');
     console.log('Player tags: ',WA.player.tags)
+
+        // ===== Iowa time access check =====
+    if (!isMapOpenInIowa()) {
+        WA.ui.openPopup(
+            "closedPopup",
+            "This space is currently closed.\n\nPlease visit us during Iowa business hours (8:00–18:00 CT).",
+            []
+        );
+        return;
+    }
+
 
     WA.room.area.onEnter('clock').subscribe(() => {
         const today = new Date();
