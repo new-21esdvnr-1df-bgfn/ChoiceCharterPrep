@@ -48,6 +48,8 @@ WA.onInit().then(() => {
 
         // ===== Iowa time access check =====
     if (!isMapOpenInIowa()) {
+      WA.controls.disablePlayerControls();
+
         WA.ui.openPopup(
             "closedPopup",
             "This space is currently closed.\n\nPlease visit us during Iowa business hours (8:00–18:00 CT).",
