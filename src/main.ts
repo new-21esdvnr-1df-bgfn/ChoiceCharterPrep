@@ -27,7 +27,7 @@ function isMapOpenInIowa(): boolean {
     const { hours, minutes } = getIowaTime();
     const currentMinutes = hours * 60 + minutes;
 
-    const OPEN_TIME = 8 * 60;   // 07:00 Iowa time
+    const OPEN_TIME = 7 * 60;   // 07:00 Iowa time
     const CLOSE_TIME = 20 * 60; // 20:00 Iowa time
 
     return currentMinutes >= OPEN_TIME && currentMinutes < CLOSE_TIME;
@@ -52,7 +52,7 @@ WA.onInit().then(() => {
 
         WA.ui.openPopup(
             "closing-screen",
-            "This space is currently closed.\n\nPlease join during opening hours (7:00am – 8pm CT).",
+            "This space is currently closed.\n\nPlease join during opening hours (7:00am - 8pm CT).",
             []
         );
     }
