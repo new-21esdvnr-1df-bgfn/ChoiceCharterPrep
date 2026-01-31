@@ -1821,6 +1821,23 @@
                  "width":288,
                  "x":3680,
                  "y":704
+                }, 
+                {
+                 "height":576,
+                 "id":136,
+                 "name":"closing-screen",
+                 "properties":[
+                        {
+                         "name":"url",
+                         "type":"string",
+                         "value":"https:\/\/docs.google.com\/presentation\/d\/e\/2PACX-1vQEQ0ojoOwMIkNL7yn5FyYvCgoMZXBKvT6UxuE7AFvI5YyBgRJvJ1v_SF9dpa2u3fMhaaUfNhYsxiZK\/pubembed?start=false&loop=false&delayms=3000&rm=minimal"
+                        }],
+                 "rotation":0,
+                 "type":"website",
+                 "visible":true,
+                 "width":1024,
+                 "x":2176,
+                 "y":1376
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -3336,7 +3353,7 @@
          "y":0
         }],
  "nextlayerid":27,
- "nextobjectid":134,
+ "nextobjectid":137,
  "orientation":"orthogonal",
  "properties":[
         {
