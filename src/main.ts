@@ -49,7 +49,7 @@ WA.onInit().then(() => {
         // ===== Iowa time access check =====
     if (!isMapOpenInIowa()) {
       WA.room.showLayer("night");
-      
+
       WA.controls.disablePlayerControls();
 
         WA.ui.openPopup(
@@ -58,6 +58,11 @@ WA.onInit().then(() => {
             []
         );
     }
+
+    else {
+    // Map is open → hide night layer
+    WA.room.hideLayer("night");
+}
 
 
     WA.room.area.onEnter('clock').subscribe(() => {
