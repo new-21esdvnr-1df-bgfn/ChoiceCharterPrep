@@ -100,6 +100,14 @@ WA.onInit().then(() => {
         WA.room.showLayer("facade-furniture-bg");
       });
 
+      WA.room.onEnterLayer("easy_button").subscribe(() => {
+        WA.room.showLayer("fireworks");
+      });
+      
+    WA.room.onLeaveLayer("floor").subscribe(() => {
+        WA.room.hideLayer("fireworks");
+      });
+
     // The line below bootstraps the Scripting API Extra library that adds a number of advanced properties/features to WorkAdventure
     bootstrapExtra().then(() => {
         console.log('Scripting API Extra ready');
