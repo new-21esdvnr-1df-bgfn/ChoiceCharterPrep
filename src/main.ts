@@ -104,7 +104,7 @@ WA.onInit().then(() => {
         WA.room.showLayer("fireworks");
       });
       
-    WA.room.onLeaveLayer("floor").subscribe(() => {
+    WA.room.onLeaveLayer("easy_button").subscribe(() => {
         WA.room.hideLayer("fireworks");
       });
 
