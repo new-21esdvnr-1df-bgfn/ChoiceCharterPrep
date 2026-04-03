@@ -54,7 +54,7 @@ WA.onInit().then(() => {
 
         WA.ui.openPopup(
             "closing-screen",
-            "This space is currently closed.\n\nPlease join during opening hours (7:00am - 8pm CT).",
+            "This space is currently closed.\n\nPlease join during opening hours (7:00am - 8:00pm CT).",
             []
         );
     }
