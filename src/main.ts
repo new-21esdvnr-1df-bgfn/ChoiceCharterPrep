@@ -1,6 +1,7 @@
 /// <reference types="@workadventure/iframe-api-typings" />
 
 import { bootstrapExtra } from "@workadventure/scripting-api-extra";
+import { trackPresence } from "./tracking";
 
 console.log('Script started successfully');
 
@@ -122,6 +123,11 @@ function closePopup(){
     }
 }
 
+/* ─────────────────────────────────────────────────────────────────────────────
+ * DISABLED — TaskMagic presence ping, superseded by the Google Form logging in
+ * ./tracking.ts. Kept for reference only; nothing below runs. Remove once the
+ * Form has covered a full term.
+ * ─────────────────────────────────────────────────────────────────────────────
 //////// Tracking Ping Script
 
 async function sendPlayerData(firstPing: boolean) {
@@ -166,4 +172,9 @@ WA.onInit().then(() => {
     }, 300000);
 });
 //// End of Tracking Ping Script
+ */
+
+WA.onInit().then(() => {
+    trackPresence();
+}).catch(e => console.error(e));
 export {};
