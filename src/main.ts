@@ -34,6 +34,31 @@ function isMapOpenInIowa(): boolean {
     return currentMinutes >= OPEN_TIME && currentMinutes < CLOSE_TIME;
 }
 
+// ===== Closed-page redirect =====
+// Staff can enter and stay after hours; everyone else is sent to closed.html
+// (hosted in public/, so it deploys next to the maps on GitHub Pages).
+const CLOSED_PAGE_FALLBACK = "https://new-21esdvnr-1df-bgfn.github.io/ChoiceCharterPrep/closed.html";
+
+function isStaff(): boolean {
+    return WA.player.tags.includes("admin") || WA.player.tags.includes("editor");
+}
+
+function redirectToClosedPage(): void {
+    let base = CLOSED_PAGE_FALLBACK;
+    try {
+        if (WA.room.mapURL) {
+            base = new URL("closed.html", WA.room.mapURL).toString();
+        }
+    } catch (e) {
+        console.error("Could not derive closed page from map URL, using fallback", e);
+    }
+    // WA.room.id is the full room URL; closed.html sends the player back to it
+    // once the campus reopens.
+    const url = `${base}?back=${encodeURIComponent(WA.room.id)}`;
+    console.log(`[Iowa Time Check] Campus closed - redirecting to ${url}`);
+    WA.nav.goToPage(url);
+}
+
 
 // Waiting for the API to be ready
 WA.onInit().then(() => {
@@ -47,23 +72,29 @@ WA.onInit().then(() => {
             .padStart(2, "0")} CT`
     );
 
-        // ===== Iowa time access check =====
+    // ===== Iowa time access check =====
     if (!isMapOpenInIowa()) {
-      WA.room.showLayer("night");
-
-      WA.controls.disablePlayerControls();
-
-        WA.ui.openPopup(
-            "closing-screen",
-            "This space is currently closed.\n\nPlease join during opening hours (7:00am - 8:00pm CT).",
-            []
-        );
+        if (!isStaff()) {
+            redirectToClosedPage();
+            return;
+        }
+        // Staff after hours: stay in the map, but keep the night look.
+        WA.room.showLayer("night");
+    } else {
+        // Map is open → hide night layer
+        WA.room.hideLayer("night");
     }
 
-    else {
-    // Map is open → hide night layer
-    WA.room.hideLayer("night");
-}
+    // Kick loop: when the campus closes while players are inside, send them
+    // to the closed page (staff excluded).
+    setInterval(() => {
+        if (!isMapOpenInIowa()) {
+            WA.room.showLayer("night");
+            if (!isStaff()) {
+                redirectToClosedPage();
+            }
+        }
+    }, 60 * 1000);
 
 
     WA.room.area.onEnter('clock').subscribe(() => {
