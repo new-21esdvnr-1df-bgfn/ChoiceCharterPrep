@@ -3,7 +3,13 @@
 import { bootstrapExtra } from "@workadventure/scripting-api-extra";
 import { trackPresence } from "./tracking";
 
-console.log('Script started successfully');
+// Version of the map SCRIPT only (not the map/tileset content), logged to the
+// console to tell which code is live — WorkAdventure can take a while to serve
+// a fresh deployment. All CharterVerse repos should carry the same script
+// version, but they can drift temporarily while a change rolls out repo by repo.
+const SCRIPT_VERSION = "1.0";
+
+console.log(`Script started successfully (version ${SCRIPT_VERSION})`);
 
 let currentPopup: any = undefined;
 
